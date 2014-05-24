@@ -1,0 +1,124 @@
+# THIS CONFIG RELIES ON 2 SCRIPTS, CPUSPEED AND CPUTEMP
+# YOUR SYSTEM MAY NOT REQUIRE THEM, REPLACE AS DESIRED
+
+# maintain spacing between certain elements
+use_spacer yes
+
+# set to yes if you want conky to be forked in the background
+background no
+
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Bitstream Vera Sans Mono-8
+#xftfont Andale Mono-9
+#xftfont Clean-8
+#xftfont cubicfive10:pixelsize=8
+#xftfont squaredance10:pixelsize=14
+#xftfont swf!t_v02:pixelsize=10
+
+# Text alpha when using Xft
+xftalpha 1
+mail_spool $MAIL
+
+# Update interval in seconds
+update_interval 5.0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+#minimum_size 200 5
+minimum_size 180 500
+
+maximum_width 180
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no # amplifies text
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 9
+
+# border width
+border_width 1
+
+# Default colors and also border colors, grey90 == #e5e5e5
+default_color grey90
+default_shade_color black
+default_outline_color DarkGrey
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+gap_x 24
+gap_y 24
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+${color #ffcb48}SYSTEM$color  
+  ${image $HOME/Pictures/Icons/kubuntu_linux.png -p 70 40}
+  
+  ${color #98c2c7}Hostname:$color ${nodename}
+  ${color #98c2c7}Kernel:$color ${kernel}
+  ${color #98c2c7}Arch:$color ${machine}
+  ${color #98c2c7}Uptime:$color ${uptime}
+# ${color #98c2c7}Batt:$color   ${battery}
+
+${color #ffcb48}PROCESSING$color
+
+  ${color #98c2c7}CPU 0:$color ${cpu cpu0}% $color #${execi 5 sensors | grep ^'Core 0' | tail -n 1 |awk '{print $3}'}
+  ${color #78af78}${cpubar cpu0}
+  ${color #78af78}${cpugraph cpu0 78af78 a3a3a3}$color
+  ${color #98c2c7}CPU 1:$color ${cpu cpu1}% $color #${execi 5 sensors | grep ^'Core 1' | tail -n 1 |awk '{print $3}'}
+  ${color #78af78}${cpubar cpu1}
+  ${color #78af78}${cpugraph cpu1 78af78 a3a3a3}$color
+  #${color #98c2c7}GPU:$color ${execi 5 sensors | grep ^'temp1' | tail -n 1 |awk '{print $2}'}
+   
+  ${font DroidSans:bold:size=8}NAME ${goto 140}CPU%$font 
+  ${top name 1} ${goto 140}${top cpu 1}   
+  ${top name 2} ${goto 140}${top cpu 2}  
+  ${top name 3} ${goto 140}${top cpu 3} 
+  ${top name 4} ${goto 140}${top cpu 4} 
+  ${top name 5} ${goto 140}${top cpu 5} 
+   
+${color #ffcb48}DATA$color
+
+  ${color #98c2c7}RAM:$color  $memperc%  ${color #78af78}${membar 6}$color
+  ${color #98c2c7}Swap:$color $swapperc% ${color #78af78}${swapbar 6}$color
+  ${color #98c2c7}/:$color ${fs_free_perc /}% $fs_free ${color #78af78}${fs_bar 6 /}$color
+
+${color #ffcb48}NETWORK$color
+
+  ${color #98c2c7}Upload:$color ${upspeed wlp4s1}
+  ${color #78af78}${upspeedgraph wlp4s1 78af78 a3a3a3}$color
+  ${color #98c2c7}Download:$color ${downspeed wlp4s1}
+  ${color #78af78}${downspeedgraph wlp4s1 78af78 a3a3a3}$color
+  ${color #98c2c7}Local IP:$color ${lip}
+  ${color #98c2c7}Public IP:$color 
+  
