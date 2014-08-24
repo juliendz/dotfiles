@@ -40,6 +40,7 @@ UWhite='\e[4;37m'       # White
 
 alias ls='ls -lha --color=auto'
 alias tw='~/Documents/livestreamer-twitch.sh'
+alias genmenu='xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu >~/.config/awesome/archmenu.lua'
 
 #PS1='[\u@\h \W]\$ '
 PS1="\[$White\][\[$BGreen\]$USER\[$White\]]\[$White\][\[$BGreen\]$HOSTNAME\[$White\]]\[$White\][\[$BGreen\]\w\[$White\]]:\[$White\]$\[$Color_Off\] "
