@@ -66,5 +66,9 @@ alias pacupd='sudo pacman -Sy && sudo abs'         # Update and refresh the loca
 alias pacinsd='sudo pacman -S --asdeps'            # Install given package(s) as dependencies
 alias pacmir='sudo pacman -Syy'                    # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
 
+alias aptupdate='sudo apt-get update'		#Apt-get update
+alias aptupgrade='sudo apt-get upgrade'		#Apt-get upgrade
+alias aptins='sudo apt-get install'		#Apt-get install
+
 #PS1='[\u@\h \W]\$ '
 PS1="\[$White\][\[$BGreen\]$USER\[$White\]]\[$White\][\[$BGreen\]$HOSTNAME\[$White\]]\[$White\][\[$BGreen\]\w\[$White\]]:\[$White\]$\[$Color_Off\] "
